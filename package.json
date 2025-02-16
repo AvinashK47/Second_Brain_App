@@ -1,0 +1,26 @@
+{
+  "name": "second_brain_app",
+  "version": "1.0.0",
+  "description": "A Second Brain Application to store and share ideas with the world.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AvinashK47/Second_Brain_App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/AvinashK47/Second_Brain_App/issues"
+  },
+  "homepage": "https://github.com/AvinashK47/Second_Brain_App#readme",
+  "dependencies": {
+    "@types/express": "^5.0.0",
+    "express": "^4.21.2",
+    "typescript": "^5.7.3"
+  }
+}
