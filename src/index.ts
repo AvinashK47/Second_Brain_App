@@ -1,7 +1,8 @@
-import express, {Request,Response,RequestHandler} from 'express';
+import express,{Request, Response,Application} from 'express';
 import { ConnectDB, UserModel } from './db';
+import dotenv from 'dotenv';
 
-const app = express();
+const app:Application = express();
 
 ConnectDB();
 
@@ -17,28 +18,30 @@ app.post('/api/v1/signup',async (req:Request,res:Response) => {
         const existingUser = await UserModel.findOne({ username });
         
         if (existingUser) {
-            return res.status(403).json({
+            res.status(403).json({
                 message: "User already exists with this username"
             });
+            return;
         }
         else {
             await UserModel.create({
                 username: username,
                 password: password
             })
-            return res.json({
+            res.json({
                 message: "User created Successfully"
             });
-                
+            return;
         }
     }
     catch(err) {
         console.log(err);
-        return res.status(500).json({ message: "Internal Server error" });
+        res.status(500).json({ message: "Internal Server error" });
+        return;
     }
 })
 
-app.post('/api/v1/signin', (req, res) => {
+app.post('/api/v1/signin', (req:Request, res:Response) => {
     
 })
 

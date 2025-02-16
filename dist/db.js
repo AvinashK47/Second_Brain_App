@@ -15,7 +15,7 @@ const mongoose_1 = require("mongoose");
 function ConnectDB() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            yield (0, mongoose_1.connect)("mongodb+srv://avinash:password@123@cluster0.i8r3m.mongodb.net/");
+            yield (0, mongoose_1.connect)("mongodb+srv://avinash:passwor@123@cluster0.i8r3m.mongodb.net/");
             console.log("Connected to Database!!!");
         }
         catch (err) {
@@ -34,4 +34,4 @@ exports.UserSchema = new mongoose_1.Schema({
         required: true
     }
 });
-exports.UserModel = (0, mongoose_1.model)('User', exports.UserSchema);
+exports.UserModel = (0, mongoose_1.model)("User", exports.UserSchema);

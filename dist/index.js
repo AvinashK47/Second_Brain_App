@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const db_1 = require("./db");
 const app = (0, express_1.default)();
-db_1.ConnectDB;
+(0, db_1.ConnectDB)();
 app.use(express_1.default.json());
 app.post('/api/v1/signup', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const username = req.body.username;
@@ -23,23 +23,26 @@ app.post('/api/v1/signup', (req, res) => __awaiter(void 0, void 0, void 0, funct
     try {
         const existingUser = yield db_1.UserModel.findOne({ username });
         if (existingUser) {
-            return res.status(403).json({
+            res.status(403).json({
                 message: "User already exists with this username"
             });
+            return;
         }
         else {
             yield db_1.UserModel.create({
                 username: username,
                 password: password
             });
-            return res.json({
+            res.json({
                 message: "User created Successfully"
             });
+            return;
         }
     }
     catch (err) {
         console.log(err);
-        return res.status(500).json({ message: "Internal Server error" });
+        res.status(500).json({ message: "Internal Server error" });
+        return;
     }
 }));
 app.post('/api/v1/signin', (req, res) => {
