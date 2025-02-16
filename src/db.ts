@@ -2,7 +2,7 @@ import mongoose,{ connect, Model, model, Schema } from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
 
-const MONGO_URI='mongodb+srv://avinash:password%40123@cluster0.i8r3m.mongodb.net/';
+const MONGO_URI='';
 
 export async function ConnectDB() {
     try {

@@ -110,7 +110,7 @@ app.delete('/api/v1/content', UserMiddleware, async (req: Request, res: Response
 		contentId: contentId,
 		userId: req.userId
 	});
-	res.json({ message: "Content deleted" });
+	res.json({ message: "Content deleted", Deleted_Content : selectedContent});
 });
 
 app.post('/api/v1/brain/share',UserMiddleware,)
