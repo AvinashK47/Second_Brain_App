@@ -46,6 +46,5 @@ export const ContentSchema = new Schema({
     }]
 })
 
-
 export const ContentModel = model("Content", ContentSchema);
 export const UserModel = model("User",UserSchema);
