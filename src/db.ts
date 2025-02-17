@@ -1,8 +1,7 @@
 import mongoose,{ connect, Model, model, Schema } from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
-
-const MONGO_URI='';
+import { MONGO_URI } from "./config";
 
 export async function ConnectDB() {
     try {
@@ -38,7 +37,7 @@ export const ContentSchema = new Schema({
         type :String
     },
     tags: [{
-        type: mongoose.Types.ObjectId,ref:'Tag'
+        type: String
     }],
     userId: [{
         type: mongoose.Types.ObjectId, ref: 'User',

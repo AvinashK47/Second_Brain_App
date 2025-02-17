@@ -1,7 +1,10 @@
 import express,{Request, Response,Application} from 'express';
 import { ConnectDB, ContentModel, UserModel } from './db';
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 import { UserMiddleware } from './middleware';
+import cors from "cors";
+
+
 const app:Application = express();
 
 const JWT_SECRET = "passwd";
@@ -9,6 +12,7 @@ const JWT_SECRET = "passwd";
 ConnectDB();
 
 app.use(express.json());
+app.use(cors());
 
 app.post('/api/v1/signup',async (req:Request,res:Response) => {
 	
@@ -106,6 +110,7 @@ app.get('/api/v1/content', UserMiddleware, async (req: Request, res: Response) =
 
 app.delete('/api/v1/content', UserMiddleware, async (req: Request, res: Response) => {
 	const contentId = req.body.contentId;
+	
 	const selectedContent = await ContentModel.deleteMany({
 		contentId: contentId,
 		userId: req.userId
@@ -113,7 +118,13 @@ app.delete('/api/v1/content', UserMiddleware, async (req: Request, res: Response
 	res.json({ message: "Content deleted", Deleted_Content : selectedContent});
 });
 
-app.post('/api/v1/brain/share',UserMiddleware,)
+app.post('/api/v1/brain/share', UserMiddleware, (req: Request, res: Response) => {
+	
+});
+
+app.get('/api/v1/brain/:shareLink', (req: Request, res: Response) => {
+	
+});
 
 app.listen(3000, () => {
 	console.log("Server is running at port 3000")
